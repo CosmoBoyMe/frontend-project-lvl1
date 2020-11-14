@@ -2,9 +2,9 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
- "bin": {
-  "brain-games": "bin/brain-games.js"
-},
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
   "description": "![Actions Status](https://github.com/CosmoBoyMe/frontend-project-lvl1/workflows/hexlet-check/badge.svg)",
   "main": "brain-games.js",
   "scripts": {
@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/CosmoBoyMe/frontend-project-lvl1#readme",
   "dependencies": {
-    "lodash": "^4.17.20"
-  }
+    "lodash": "^4.17.20",
+    "promptly": "^3.2.0"
+  },
+  "devDependencies": {}
 }
