@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-
-console.log('Welcome to the Brain Games!');
-
+"use strict";
+import {x as name} from '../src/cli.js';
+console.log('Welcome to the Brain Games!'); // greeting
+name(); // Asking for a name
 
 
