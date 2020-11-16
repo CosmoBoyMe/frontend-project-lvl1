@@ -1,10 +1,12 @@
 name: hexlet-check
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+on: [push]
 
-      - name: Hexlet project check
-        uses: hexlet/project-action@release
+jobs:
+  start-eslint:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: start lint
+        run: make lint
+        
+        
