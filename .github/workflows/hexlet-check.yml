@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       - name: git clone
-      - uses: action/checkout@v1
+        uses: action/checkout@v1
       - name: run eslint
-      - run: make lint
+        run: make lint
         
         
