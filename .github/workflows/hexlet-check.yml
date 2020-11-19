@@ -8,6 +8,9 @@ jobs:
     steps:
       - name: git clone
         uses: actions/checkout@v1
+      - name: node install
+        uses: actions/setup-node@v2.1.2
+      - run: make install
       - name: run eslint
         run: make lint
         
