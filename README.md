@@ -17,3 +17,7 @@
 ### Start brain-progression
 
 <a href="https://asciinema.org/a/374922" target="_blank"><img src="https://asciinema.org/a/374922.svg" /></a>
+
+### Start brain-prime 
+
+<a href="https://asciinema.org/a/374927" target="_blank"><img src="https://asciinema.org/a/374927.svg" /></a>
