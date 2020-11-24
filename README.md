@@ -13,3 +13,7 @@
 ### Start brain-gcd
 
 <a href="https://asciinema.org/a/374919" target="_blank"><img src="https://asciinema.org/a/374919.svg" /></a>
+
+### Start brain-progression
+
+<a href="https://asciinema.org/a/374922" target="_blank"><img src="https://asciinema.org/a/374922.svg" /></a>
