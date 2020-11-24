@@ -5,3 +5,7 @@
 ### Start brain-even
 
 <a href="https://asciinema.org/a/374421" target="_blank"><img src="https://asciinema.org/a/374421.svg" /></a>
+
+### Start brain-calc
+
+<a href="https://asciinema.org/a/374906" target="_blank"><img src="https://asciinema.org/a/374906.svg" /></a>
