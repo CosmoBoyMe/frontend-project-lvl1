@@ -8,4 +8,8 @@
 
 ### Start brain-calc
 
-<a href="https://asciinema.org/a/374906" target="_blank"><img src="https://asciinema.org/a/374906.svg" /></a>
+<a href="https://asciinema.org/a/374921" target="_blank"><img src="https://asciinema.org/a/374921.svg" /></a>
+
+### Start brain-gcd
+
+<a href="https://asciinema.org/a/374919" target="_blank"><img src="https://asciinema.org/a/374919.svg" /></a>
