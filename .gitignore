@@ -1,4 +1,6 @@
 /node_modules/
 *.log
+.br.swp
+.touch.swp
 dist
 coverage
