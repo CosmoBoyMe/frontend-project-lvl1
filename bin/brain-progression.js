@@ -1,28 +1,30 @@
 #!/usr/bin/env node
 
-import { makeRandomNumber, logic } from '../src/index.js';
+import { getRandomNumber, runGame } from '../src/index.js';
 
-const text = 'What number is missing in the progression?';
-const progression = [];
-const correctAnswer = [];
-
-for (let i = 0; i <= 2; i += 1) {
-  const lenghtProgression = makeRandomNumber(5, 10);
-  const firstNumberProgression = makeRandomNumber(1, 10);
-  const stepProgression = makeRandomNumber(1, 10);
-  const removeRandomStep = makeRandomNumber(1, lenghtProgression);
-  const actualProgression = [];
-  let actualStep = firstNumberProgression;
-  for (let n = 0; n <= lenghtProgression; n += 1) {
-    actualStep += stepProgression;
-    if (n === removeRandomStep) {
-      correctAnswer.push(actualStep);
-      actualProgression[n] = '..';
-    } else {
-      actualProgression.push(actualStep);
+const getGameSetting = () => {
+  const text = 'What number is missing in the progression?';
+  const progressions = [];
+  const correctAnswers = [];
+  for (let i = 0; i < 3; i += 1) {
+    const lengthProgression = getRandomNumber(5, 10);
+    const firstNumberProgression = getRandomNumber(1, 10);
+    const stepProgression = getRandomNumber(1, 10);
+    const randomStep = getRandomNumber(1, lengthProgression);
+    const currentProgression = [];
+    let currentStep = firstNumberProgression;
+    for (let num = 0; num <= lengthProgression; num += 1) {
+      currentStep += stepProgression;
+      if (num === randomStep) {
+        correctAnswers.push(currentStep);
+        currentProgression[num] = '..';
+      } else {
+        currentProgression.push(currentStep);
+      }
     }
+    progressions.push(currentProgression.join(' '));
   }
-  progression.push(actualProgression.join(' '));
-}
+  return { text, progressions, correctAnswers };
+};
 
-logic(text, progression, correctAnswer);
+runGame(getGameSetting());
