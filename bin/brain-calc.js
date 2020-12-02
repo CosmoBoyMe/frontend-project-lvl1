@@ -1,36 +1,38 @@
 #!/usr/bin/env node
 
-import { makeRandomNumber, logic } from '../src/index.js';
+import { getRandomNumber, runGame } from '../src/index.js';
 
-const makeRandomOperator = () => {
-  const operator = ['+', '-', '*'];
-  return operator[makeRandomNumber(0, 2)];
+const getRandomOperator = () => {
+  const operators = ['+', '-', '*'];
+  return operators[getRandomNumber(0, 2)];
 };
 
-const text = 'What is the result of the expression?';
-const mathExpression = [];
-const correctAnswer = [];
-
-for (let i = 1; i <= 3; i += 1) {
-  const firstNumber = makeRandomNumber(1, 10);
-  const secondNumber = makeRandomNumber(1, 10);
-  const operator = makeRandomOperator();
-  switch (operator) {
-    case '+':
-      correctAnswer.push(firstNumber + secondNumber);
-      mathExpression.push(`${firstNumber} + ${secondNumber}`);
-      break;
-    case '-':
-      correctAnswer.push(firstNumber - secondNumber);
-      mathExpression.push(`${firstNumber} - ${secondNumber}`);
-      break;
-    case '*':
-      correctAnswer.push(firstNumber * secondNumber);
-      mathExpression.push(`${firstNumber} * ${secondNumber}`);
-      break;
-
-      // no default
+const getGameSetting = () => {
+  const text = 'What is the result of the expression?';
+  const mathExpressions = [];
+  const correctAnswers = [];
+  for (let i = 0; i < 3; i += 1) {
+    const firstNumber = getRandomNumber(1, 10);
+    const secondNumber = getRandomNumber(1, 10);
+    const operator = getRandomOperator();
+    switch (operator) {
+      case '+':
+        correctAnswers.push(firstNumber + secondNumber);
+        mathExpressions.push(`${firstNumber} + ${secondNumber}`);
+        break;
+      case '-':
+        correctAnswers.push(firstNumber - secondNumber);
+        mathExpressions.push(`${firstNumber} - ${secondNumber}`);
+        break;
+      case '*':
+        correctAnswers.push(firstNumber * secondNumber);
+        mathExpressions.push(`${firstNumber} * ${secondNumber}`);
+        break;
+      default:
+        console.log('errors operator');
+    }
   }
-}
+  return { text, mathExpressions, correctAnswers };
+};
 
-logic(text, mathExpression, correctAnswer);
+runGame(getGameSetting());

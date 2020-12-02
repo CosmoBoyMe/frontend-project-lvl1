@@ -1,24 +1,25 @@
 #!/usr/bin/env node
 
-import { makeRandomNumber, logic } from '../src/index.js';
+import { getRandomNumber, runGame } from '../src/index.js';
 
-const text = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-const primeNumbers = [];
-const correctAnswer = [];
-const isPrime = (n) => {
-  for (let i = 2; i < n; i += 1) {
-    if (n % i === 0) {
+const isPrime = (number) => {
+  for (let denom = 2; denom < number; denom += 1) {
+    if (number % denom === 0) {
       return 'no';
     }
   }
-  return n < 2 ? 'no' : 'yes';
+  return number < 2 ? 'no' : 'yes';
+};
+const getGameSetting = () => {
+  const text = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  const primeNumbers = [];
+  const correctAnswers = [];
+  for (let i = 0; i < 3; i += 1) {
+    const randomNumber = getRandomNumber(1, 100);
+    primeNumbers.push(randomNumber);
+    correctAnswers.push(isPrime(randomNumber));
+  }
+  return { text, primeNumbers, correctAnswers };
 };
 
-for (let i = 0; i <= 2; i += 1) {
-  const primeNumber = makeRandomNumber(1, 100);
-  primeNumbers.push(primeNumber);
-  correctAnswer.push(isPrime(primeNumber));
-}
-
-logic(text, primeNumbers, correctAnswer);
+runGame(getGameSetting());
