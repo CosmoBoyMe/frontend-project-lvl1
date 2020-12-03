@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import { getRandomNumber, runGame } from '../src/index.js';
 
 const isEven = (n) => (n % 2 === 0 ? 'yes' : 'no'); // is a number even?
