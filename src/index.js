@@ -1,6 +1,5 @@
 import readlineSync from 'readline-sync';
-
-import userName from '../bin/brain-games.js';
+import askUserName from './cli.js';
 
 const getRandomNumber = (min, max) => Math.round(Math.random() * (max - min) + min);
 const askUser = (expression) => {
@@ -9,8 +8,9 @@ const askUser = (expression) => {
   return userAnswer;
 };
 
-const runGame = (setting) => {
-  const [text, expression, correctAnswer] = Object.values(setting);
+const runGame = (gameSetting) => {
+  const [text, expression, correctAnswer] = Object.values(gameSetting);
+  const userName = askUserName();
   console.log(text);
   let wrongAnswer = '';
   for (let i = 0; i < 3; i += 1) {
