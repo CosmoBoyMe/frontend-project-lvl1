@@ -1,33 +1,32 @@
 import readlineSync from 'readline-sync';
 import askUserName from './cli.js';
+import getRandomNumber from './methods.js';
 
-const getRandomNumber = (min, max) => Math.round(Math.random() * (max - min) + min);
 const askUser = (expression) => {
   console.log(`Question: ${expression}`);
   const userAnswer = readlineSync.question('Your answer: ');
   return userAnswer;
 };
 
-const runGame = (gameSetting) => {
-  const [text, expression, correctAnswer] = Object.values(gameSetting);
-  const userName = askUserName();
+const userName = askUserName();
+
+const GAME_ROUND = 3;
+
+const runGame = (gameSetting, text) => {
   console.log(text);
-  let wrongAnswer = '';
-  for (let i = 0; i < 3; i += 1) {
-    const currentExpression = expression[i];
-    const currentAnswer = correctAnswer[i];
-    const userAnswer = askUser(currentExpression);
-    if (userAnswer === String(currentAnswer)) {
-      if (i < 2) {
-        console.log('Correct!');
-      } else {
-        console.log(`Correct \nCongratulations, ${userName}!`);
-      }
+
+  for (let i = 0; i < GAME_ROUND; i += 1) {
+    const [expression, correctAnswer] = gameSetting();
+    const userAnswer = askUser(expression);
+    if (userAnswer === correctAnswer) {
+      console.log('Correct!');
     } else {
-      wrongAnswer = `${userAnswer} is wrong answer ;(. Correct answer was ${currentAnswer}.\nLet's try again ${userName}`;
-      break;
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}.`);
+      console.log(`Let's try again ${userName}`);
+      return;
     }
   }
-  return console.log(wrongAnswer);
+  console.log(`Congratulations, ${userName}!`);
 };
+
 export { getRandomNumber, runGame };

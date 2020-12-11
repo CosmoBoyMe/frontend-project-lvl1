@@ -1,15 +1,20 @@
-import { getRandomNumber } from '../index.js';
+import { runGame } from '../index.js';
+import getRandomNumber from '../methods.js';
 
-const isEven = (n) => (n % 2 === 0 ? 'yes' : 'no'); // is a number even?
+const text = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const isEven = (n) => (n % 2 === 0); // is a number even?
+
+const maxRandomNumber = 100;
+
 const getGameSetting = () => {
-  const text = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const expressions = [];
-  const correctAnswers = [];
-  for (let i = 0; i < 3; i += 1) {
-    const randomNumber = getRandomNumber(1, 100);
-    expressions.push(randomNumber);
-    correctAnswers.push(isEven(expressions[i]));
-  }
-  return { text, expressions, correctAnswers };
+  const randomNumber = getRandomNumber(1, maxRandomNumber);
+  const expression = randomNumber;
+  const correctAnswer = isEven(randomNumber) ? 'yes' : 'no';
+
+  return [expression, correctAnswer];
 };
-export default getGameSetting;
+
+const startGame = () => runGame(getGameSetting, text);
+
+export default startGame;
