@@ -27,10 +27,10 @@ const getGameSetting = () => {
   const secondNumber = getRandomNumber(1, MAX_RANDOM_NUMBER);
   const randomOperator = getRandomOperator();
 
-  const mathExpression = `${firstNumber} ${randomOperator} ${secondNumber}`;
+  const question = `${firstNumber} ${randomOperator} ${secondNumber}`;
   const correctAnswer = getCorrectAnswer(firstNumber, secondNumber, randomOperator);
 
-  return [mathExpression, String(correctAnswer)];
+  return [question, String(correctAnswer)];
 };
 
 const startGame = () => runGame(getGameSetting, text);

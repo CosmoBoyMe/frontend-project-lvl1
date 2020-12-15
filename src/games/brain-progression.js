@@ -12,18 +12,22 @@ const getProgression = (firstNumber, step, length) => {
   return result;
 };
 
+const MIN_RANDOM_NUMBER = 1;
 const MAX_RANDOM_NUMBER = 10;
 
 const getGameSetting = () => {
   const length = getRandomNumber(5, 10);
-  const firstNumber = getRandomNumber(1, MAX_RANDOM_NUMBER);
-  const step = getRandomNumber(1, MAX_RANDOM_NUMBER);
+  const firstNumber = getRandomNumber(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+  const step = getRandomNumber(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
   const randomIndex = getRandomNumber(1, length);
 
   const progression = getProgression(firstNumber, step, length);
-  const correctAnswer = progression[randomIndex];
+
+  const correctAnswer = String(progression[randomIndex]);
   progression[randomIndex] = '..';
-  return [progression.join(' '), String(correctAnswer)];
+  const question = progression.join(' ');
+
+  return [question, correctAnswer];
 };
 
 const startGame = () => runGame(getGameSetting, text);

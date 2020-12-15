@@ -15,10 +15,12 @@ const isPrime = (number) => {
 const MAX_RANDOM_NUMBER = 100;
 
 const getGameSetting = () => {
-  const number = getRandomNumber(1, MAX_RANDOM_NUMBER);
-  const correctAnswer = isPrime(number) ? 'no' : 'yes';
+  const randomNumber = getRandomNumber(1, MAX_RANDOM_NUMBER);
 
-  return [number, correctAnswer];
+  const question = `${randomNumber}`;
+  const correctAnswer = isPrime(randomNumber) ? 'no' : 'yes';
+
+  return [question, correctAnswer];
 };
 
 const startGame = () => runGame(getGameSetting, text);
