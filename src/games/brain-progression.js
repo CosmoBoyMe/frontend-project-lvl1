@@ -1,7 +1,11 @@
-import { runGame } from '../index.js';
-import getRandomNumber from '../methods.js';
+import runGame from '../index.js';
+import getRandomNumber from '../utilit.js';
 
-const text = 'What number is missing in the progression?';
+const TEXT = 'What number is missing in the progression?';
+const MIN_RANDOM_NUMBER = 1;
+const MAX_RANDOM_NUMBER = 100;
+const MIN_LENGTH = 5;
+const MAX_LENGHT = 10;
 
 const getProgression = (firstNumber, step, length) => {
   const result = [];
@@ -9,27 +13,25 @@ const getProgression = (firstNumber, step, length) => {
   for (let i = 0; i < length; i += 1) {
     result.push(firstNumber + i * step);
   }
+
   return result;
 };
 
-const MIN_RANDOM_NUMBER = 1;
-const MAX_RANDOM_NUMBER = 10;
-
 const getGameSetting = () => {
-  const length = getRandomNumber(5, 10);
+  const length = getRandomNumber(MIN_LENGTH, MAX_LENGHT);
   const firstNumber = getRandomNumber(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
   const step = getRandomNumber(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-  const randomIndex = getRandomNumber(1, length);
+  const index = getRandomNumber(MIN_RANDOM_NUMBER, length);
 
   const progression = getProgression(firstNumber, step, length);
 
-  const correctAnswer = String(progression[randomIndex]);
-  progression[randomIndex] = '..';
+  const correctAnswer = progression[index];
+  progression[index] = '..';
   const question = progression.join(' ');
 
-  return [question, correctAnswer];
+  return [question, String(correctAnswer)];
 };
 
-const startGame = () => runGame(getGameSetting, text);
+const startGame = () => runGame(getGameSetting, TEXT);
 
 export default startGame;

@@ -1,7 +1,9 @@
-import { runGame } from '../index.js';
-import getRandomNumber from '../methods.js';
+import runGame from '../index.js';
+import getRandomNumber from '../utilit.js';
 
-const text = 'What is the result of the expression?';
+const TEXT = 'What is the result of the expression?';
+const MIN_RANDOM_NUMBER = 1;
+const MAX_RANDOM_NUMBER = 10;
 
 const operators = ['+', '-', '*'];
 
@@ -16,23 +18,21 @@ const getCorrectAnswer = (firstNumber, secondNumber, randomOperator) => {
     case '*':
       return firstNumber * secondNumber;
     default:
-      return 'errors operator';
+      return NaN;
   }
 };
 
-const MAX_RANDOM_NUMBER = 10;
-
 const getGameSetting = () => {
-  const firstNumber = getRandomNumber(1, MAX_RANDOM_NUMBER);
-  const secondNumber = getRandomNumber(1, MAX_RANDOM_NUMBER);
-  const randomOperator = getRandomOperator();
+  const firstNumber = getRandomNumber(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+  const secondNumber = getRandomNumber(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+  const operator = getRandomOperator();
 
-  const question = `${firstNumber} ${randomOperator} ${secondNumber}`;
-  const correctAnswer = getCorrectAnswer(firstNumber, secondNumber, randomOperator);
+  const question = `${firstNumber} ${operator} ${secondNumber}`;
+  const correctAnswer = getCorrectAnswer(firstNumber, secondNumber, operator);
 
   return [question, String(correctAnswer)];
 };
 
-const startGame = () => runGame(getGameSetting, text);
+const startGame = () => runGame(getGameSetting, TEXT);
 
 export default startGame;

@@ -1,21 +1,21 @@
-import { runGame } from '../index.js';
-import getRandomNumber from '../methods.js';
+import runGame from '../index.js';
+import getRandomNumber from '../utilit.js';
 
-const text = 'Answer "yes" if the number is even, otherwise answer "no".';
-
-const isEven = (n) => (n % 2 === 0); // is a number even?
-
+const TEXT = 'Answer "yes" if the number is even, otherwise answer "no".';
+const MIN_RANDOM_NUMBER = 1;
 const MAX_RANDOM_NUMBER = 100;
 
-const getGameSetting = () => {
-  const randomNumber = getRandomNumber(1, MAX_RANDOM_NUMBER);
+const isEven = (n) => (n % 2 === 0);
 
-  const question = `${randomNumber}`;
-  const correctAnswer = isEven(randomNumber) ? 'yes' : 'no';
+const getGameSetting = () => {
+  const number = getRandomNumber(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+
+  const question = `${number}`;
+  const correctAnswer = isEven(number) ? 'yes' : 'no';
 
   return [question, correctAnswer];
 };
 
-const startGame = () => runGame(getGameSetting, text);
+const startGame = () => runGame(getGameSetting, TEXT);
 
 export default startGame;

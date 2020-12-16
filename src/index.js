@@ -1,23 +1,21 @@
 import readlineSync from 'readline-sync';
 import askUserName from './cli.js';
-import getRandomNumber from './methods.js';
 
-const askUser = (task) => {
+const GAME_ROUND = 3;
+
+const getUserAnswer = (task) => {
   console.log(`Question: ${task}`);
   const userAnswer = readlineSync.question('Your answer: ');
   return userAnswer;
 };
 
-const userName = askUserName();
-
-const GAME_ROUND = 3;
-
 const runGame = (gameSetting, text) => {
+  const userName = askUserName();
   console.log(text);
 
   for (let i = 0; i < GAME_ROUND; i += 1) {
     const [question, correctAnswer] = gameSetting();
-    const userAnswer = askUser(question);
+    const userAnswer = getUserAnswer(question);
     if (userAnswer === correctAnswer) {
       console.log('Correct!');
     } else {
@@ -29,4 +27,4 @@ const runGame = (gameSetting, text) => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export { getRandomNumber, runGame };
+export default runGame;
