@@ -3,7 +3,7 @@ import getRandomNumber from '../utilit.js';
 
 const TEXT = 'What number is missing in the progression?';
 const MIN_RANDOM_NUMBER = 1;
-const MAX_RANDOM_NUMBER = 100;
+const MAX_RANDOM_NUMBER = 10;
 const MIN_LENGTH = 5;
 const MAX_LENGHT = 10;
 
