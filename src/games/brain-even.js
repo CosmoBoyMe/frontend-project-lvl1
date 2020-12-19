@@ -1,5 +1,5 @@
 import runGame from '../index.js';
-import getRandomNumber from '../utilit.js';
+import getRandomNumber from '../random-number.js';
 
 const TEXT = 'Answer "yes" if the number is even, otherwise answer "no".';
 const MIN_RANDOM_NUMBER = 1;

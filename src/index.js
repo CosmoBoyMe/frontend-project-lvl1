@@ -3,8 +3,8 @@ import askUserName from './cli.js';
 
 const GAME_ROUND = 3;
 
-const getUserAnswer = (task) => {
-  console.log(`Question: ${task}`);
+const getUserAnswer = (question) => {
+  console.log(`Question: ${question}`);
   const userAnswer = readlineSync.question('Your answer: ');
   return userAnswer;
 };

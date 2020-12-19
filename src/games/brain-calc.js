@@ -1,5 +1,5 @@
 import runGame from '../index.js';
-import getRandomNumber from '../utilit.js';
+import getRandomNumber from '../random-number.js';
 
 const TEXT = 'What is the result of the expression?';
 const MIN_RANDOM_NUMBER = 1;
@@ -9,8 +9,8 @@ const operators = ['+', '-', '*'];
 
 const getRandomOperator = () => operators[getRandomNumber(0, operators.length - 1)];
 
-const getCorrectAnswer = (firstNumber, secondNumber, randomOperator) => {
-  switch (randomOperator) {
+const getCorrectAnswer = (firstNumber, secondNumber, operator) => {
+  switch (operator) {
     case '+':
       return firstNumber + secondNumber;
     case '-':
@@ -18,7 +18,7 @@ const getCorrectAnswer = (firstNumber, secondNumber, randomOperator) => {
     case '*':
       return firstNumber * secondNumber;
     default:
-      return NaN;
+      throw new Error(`operator (${operator}) not supported`);
   }
 };
 
