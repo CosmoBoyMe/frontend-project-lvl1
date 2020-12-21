@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import askUserName from './cli.js';
 
-const GAME_ROUND = 3;
+const MAX_GAME_ROUND = 3;
 
 const getUserAnswer = (question) => {
   console.log(`Question: ${question}`);
@@ -13,7 +13,7 @@ const runGame = (gameSetting, text) => {
   const userName = askUserName();
   console.log(text);
 
-  for (let i = 0; i < GAME_ROUND; i += 1) {
+  for (let i = 0; i < MAX_GAME_ROUND; i += 1) {
     const [question, correctAnswer] = gameSetting();
     const userAnswer = getUserAnswer(question);
     if (userAnswer === correctAnswer) {
